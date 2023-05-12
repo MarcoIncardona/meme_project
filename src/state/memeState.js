@@ -16,7 +16,7 @@ export const memeState = createSlice({
         setAllMeme: (state, action) => {state.allMeme = [...state.allMeme, action.payload]},
         setTopText: (state, action) => {state.topText = action.payload},
         setBottomText: (state, action) => {state.bottomText = action.payload},
-        resetText: (state, action) => {state.topText = "", state.bottomText = ""}
+        resetText: (state ) => {state.topText = "", state.bottomText = ""}
     }
 })
 

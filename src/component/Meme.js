@@ -10,63 +10,47 @@ export function Meme(){
 
     const dispatch = useDispatch()
 
-    // const [meme, setMeme] = useState({
-    //     memeImg: "",
-    //     topText : "",
-    //     bottomText : ""
-    // })
-
-    // const [allMemes, setAllMemes] = useState()
-    // const [error, setError] = useState(null);
-
-    // useEffect(()=>{
-    //     axios.get("https://api.imgflip.com/get_memes").then(res => {
-    //         setAllMemes(res.data.data.memes)
-    //     }).catch(err => setError(err))
-    // },[])
-
-    // if (error) return `Error: ${error.message}`;
-
+    
     useEffect(()=>{
         dispatch(fetchMeme())
     },[])
-
     
-
+    
+    
     function handleClick(){
         let randomMeme = Meme.allMeme[0].data.memes[Math.floor(Math.random() * Meme.allMeme[0].data.memes.length)]
         // setMeme((prev) =>{
-        //     return{
-        //         ...prev,
-        //         memeImg : randomMeme.url,
-        //         topText : "",
-        //         bottomText : ""         
-        //     }
-        // })
-           dispatch(memeState.actions.setImg(randomMeme.url))
-           dispatch(memeState.actions.resetText())
-    }
+            //     return{
+                //         ...prev,
+                //         memeImg : randomMeme.url,
+                //         topText : "",
+                //         bottomText : ""         
+                //     }
+                // })
+                dispatch(memeState.actions.setImg(randomMeme.url))
+                dispatch(memeState.actions.resetText())
+            }
     
-
-
-    function handleChange(event){
-        const {name, value} = event.target
-        // setMeme((prev)=>{
-        //     return{
-        //         ...prev,
-        //         [name] : value
-        //     }
-        // })
-        if(name === "topText"){
-            dispatch(memeState.actions.setTopText(value))
-        }else{
-            dispatch(memeState.actions.setBottomText(value))
-        }
-    }
-
-    console.log(Meme)
-    return(
-        <div>           
+            
+            
+            function handleChange(event){
+                const {name, value} = event.target
+                // setMeme((prev)=>{
+                    //     return{
+                        //         ...prev,
+                        //         [name] : value
+                        //     }
+                        // })
+                        if(name === "topText"){
+                            dispatch(memeState.actions.setTopText(value))
+                        }else{
+                            dispatch(memeState.actions.setBottomText(value))
+                        }
+                    }
+                    
+                    console.log(Meme)
+                    return(
+                        <div>           
             <div className=" w-[80%]  m-auto flex flex-col gap-6 pt-16">
                 <div className="flex justify-center gap-12 ">
                     <input value={Meme.topText} name="topText" onChange={handleChange} className="text-xl font-sans pl-2 font-bold border-gray-300 border-2 rounded-lg h-14 w-96"
@@ -86,3 +70,46 @@ export function Meme(){
         </div>
     )
 }
+
+/* STATE USING USESTATE INSTEAD REDUX */ 
+
+    // const [meme, setMeme] = useState({
+    //     memeImg: "",
+    //     topText : "",
+    //     bottomText : ""
+    // })
+
+    // const [allMemes, setAllMemes] = useState()
+    // const [error, setError] = useState(null);
+
+    // useEffect(()=>{
+    //     axios.get("https://api.imgflip.com/get_memes").then(res => {
+    //         setAllMemes(res.data.data.memes)
+    //     }).catch(err => setError(err))
+    // },[])
+
+    // if (error) return `Error: ${error.message}`;
+
+
+    // function handleClick(){
+    //     let randomMeme = meme.allMemes[Math.floor(Math.random() * meme.AllMemeslength)]
+    //     setMeme((prev) =>{
+    //             return{
+    //                     ...prev,
+    //                     memeImg : randomMeme.url,
+    //                     topText : "",
+    //                     bottomText : ""         
+    //                 }
+    //             })
+                
+    //         }
+
+    // function handleChange(event){
+    //     const {name, value} = event.target
+    //     setMeme((prev)=>{
+    //             return{
+    //                     ...prev,
+    //                     [name] : value
+    //                 }
+    //             })
+    //         }
