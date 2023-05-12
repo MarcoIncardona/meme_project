@@ -19,14 +19,6 @@ export function Meme(){
     
     function handleClick(){
         let randomMeme = Meme.allMeme[0].data.memes[Math.floor(Math.random() * Meme.allMeme[0].data.memes.length)]
-        // setMeme((prev) =>{
-            //     return{
-                //         ...prev,
-                //         memeImg : randomMeme.url,
-                //         topText : "",
-                //         bottomText : ""         
-                //     }
-                // })
                 dispatch(memeState.actions.setImg(randomMeme.url))
                 dispatch(memeState.actions.resetText())
             }
@@ -35,12 +27,6 @@ export function Meme(){
             
             function handleChange(event){
                 const {name, value} = event.target
-                // setMeme((prev)=>{
-                    //     return{
-                        //         ...prev,
-                        //         [name] : value
-                        //     }
-                        // })
                         if(name === "topText"){
                             dispatch(memeState.actions.setTopText(value))
                         }else{
